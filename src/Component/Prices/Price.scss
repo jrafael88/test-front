@@ -1,0 +1,34 @@
+.price {
+  border-radius: 3px;
+  border: 1px solid #CCC;
+  padding: 14px;
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-top: 16px;
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 9px;
+    }
+
+    p {
+      color: #212122;
+      font-family: "Helvetica Neue";
+      font-size: 14px;
+      line-height: 17px;
+      text-transform: uppercase;
+
+      &.bold {
+        font-weight: bold;
+      }
+
+      &.orange {
+        color: #FF7800;
+      }
+    }
+  }
+}
