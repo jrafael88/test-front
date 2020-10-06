@@ -1,0 +1,16 @@
+.product-list {
+  &-item {
+    list-style-type: none;
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .box-price {
+    width: 370px;
+    margin: 21px 0 0 20px;
+  }
+}

@@ -23,10 +23,13 @@ class App extends React.Component {
     confirmation: false,
   };
 
-  onClickButton = (e) => {
-    e.preventDefault();
-    console.log("clicou");
-    this.setState({ payment: true });
+  onClickButton = (value) => {
+    this.setState({
+      shoppingCart: false,
+      payment: false,
+      confirmation: false,
+      [value]: true,
+    });
   };
 
   render() {
@@ -35,14 +38,18 @@ class App extends React.Component {
       <div>
         <div>
           <u>
-            <li>Sacola</li>
-            <li>Pagamento</li>
-            <li>Confirmação</li>
+            <li onClick={() => this.onClickButton("shoppingCart")}>Sacola</li>
+            <li onClick={() => this.onClickButton("payment")}>Pagamento</li>
+            <li onClick={() => this.onClickButton("confirmation")}>
+              Confirmação
+            </li>
           </u>
         </div>
-        {shoppingCart && <LoadableShopping />}
-        {payment && <LoadablePayment />}
-        {confirmation && <LoadableConfirmation />}
+        <div className="wrapper">
+          {shoppingCart && <LoadableShopping showButton={shoppingCart} />}
+          {payment && <LoadablePayment />}
+          {confirmation && <LoadableConfirmation />}
+        </div>
       </div>
     );
   }

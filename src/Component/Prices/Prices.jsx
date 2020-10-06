@@ -4,23 +4,24 @@ import "./Price.scss";
 
 class Prices extends React.Component {
   render() {
+    const { subTotal, shippingTotal, discount, total } = this.props;
     return (
       <div className="price">
         <div className="price-item">
           <p>Produtos</p>
-          <p> R$ 624,80</p>
+          <p> R$ {subTotal}</p>
         </div>
         <div className="price-item">
           <p>Frete</p>
-          <p> R$ 5,30</p>
+          <p> R$ {shippingTotal}</p>
         </div>
         <div className="price-item">
           <p className="orange">Desconto</p>
-          <p className="orange"> R$ -30,00</p>
+          <p className="orange"> R$ {discount}</p>
         </div>
         <div className="price-item">
           <p className="bold">Total</p>
-          <p className="bold"> R$ 600,10</p>
+          <p className="bold"> R$ {total}</p>
         </div>
       </div>
     );
