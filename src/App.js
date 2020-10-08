@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Loadable from "react-loadable";
 
 const LoadableShopping = Loadable({
@@ -18,8 +18,8 @@ const LoadableConfirmation = Loadable({
 
 class App extends React.Component {
   state = {
-    shoppingCart: true,
-    payment: false,
+    shoppingCart: false,
+    payment: true,
     confirmation: false,
   };
 
@@ -45,11 +45,11 @@ class App extends React.Component {
             </li>
           </u>
         </div>
-        <div className="wrapper">
+        <Fragment>
           {shoppingCart && <LoadableShopping showButton={shoppingCart} />}
           {payment && <LoadablePayment />}
           {confirmation && <LoadableConfirmation />}
-        </div>
+        </Fragment>
       </div>
     );
   }

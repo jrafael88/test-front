@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Prices from "../Prices/Prices";
 import Product from "../Product/Product";
 
@@ -9,7 +9,7 @@ class ShoppingCart extends React.Component {
   render() {
     const { showButton } = this.props;
     return (
-      <Fragment>
+      <div className="wrapper">
         <div className="content content-product">
           <div className="content-title">
             <h1>Produtos</h1>
@@ -38,7 +38,7 @@ class ShoppingCart extends React.Component {
             <button className="btn btn-orange">Seguir para o pagamento</button>
           )}
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

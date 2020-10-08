@@ -1,0 +1,90 @@
+@media screen and (min-width: 900px) {
+  .box-price {
+    width: 370px;
+    margin: 21px 0 0 20px;
+  }
+}
+
+.form {
+  &-group {
+    width: 100%;
+
+    &.error {
+      span {
+        display: inline-block;
+      }
+    }
+
+    span {
+      color: #F30;
+      font-family: "Helvetica Neue";
+      font-size: 12px;
+      line-height: 14px;
+      display: none;
+    }
+
+    label {
+      display: block;
+      height: 14px;
+      color: #CCC;
+      font-family: "Helvetica Neue";
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 14px;
+      margin: 0 0 5px;
+    }
+
+    input {
+      box-sizing: border-box;
+      height: 45px;
+      width: 100%;
+      padding: 0 13px;
+      border-radius: 3px;
+      background-color: #FFF;
+      border: 1px solid #E7E7E7;
+      box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      color: #212121;
+      font-size: 16px;
+      letter-spacing: 1.37px;
+      line-height: 19px;
+
+      &::placeholder {
+        color: #E0E7EE;
+        font-family: "Helvetica Neue";
+      }
+
+      &:focus {
+        border-color: #A43287;
+        outline: #A43287;
+      }
+    }
+  }
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .grid {
+    width: 100%;
+    display: flex;
+
+    &:not(:first-child) {
+      margin-top: 25px;
+    }
+
+    &-col1 {
+      width: 100%;
+    }
+
+    &-col2 {
+      width: calc(60% - 45px);
+      margin-right: 45px;
+    }
+
+    &-col3 {
+      width: 40%;
+    }
+  }
+}

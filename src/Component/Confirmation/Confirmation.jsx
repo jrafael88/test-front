@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 import "./Confirmation.scss";
@@ -6,11 +6,13 @@ import "./Confirmation.scss";
 class Confirmation extends React.Component {
   render() {
     return (
-      <Fragment>
+      <div className="wrapper">
         <div className="content content-confirmation">
           <div className="confirmation-success">
             <i className="confirmation-success-icon" />
-            <p className="confirmation-success-text">Compra Efetuada com sucesso</p>
+            <p className="confirmation-success-text">
+              Compra Efetuada com sucesso
+            </p>
           </div>
           <div className="content-title">
             <h1>Pagamento</h1>
@@ -26,7 +28,7 @@ class Confirmation extends React.Component {
           </div>
         </div>
         <ShoppingCart />
-      </Fragment>
+      </div>
     );
   }
 }
