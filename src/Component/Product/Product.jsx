@@ -1,4 +1,5 @@
 import React from "react";
+import { maskPrice } from "../../Helpers/Mask";
 
 import "./product.scss";
 
@@ -14,7 +15,7 @@ class Product extends React.Component {
         <div className="product-description">
           <p className="product-description-title">{product.name}</p>
           <p className="product-description-price">
-            R$ {product.priceSpecification.price}
+            R$ {maskPrice(product.priceSpecification.price)}
           </p>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import React from "react";
-import { maskDate, maskCard } from "../../Helpers/Mask";
-import paymentValidation from "../../Helpers/paymentValidation";
-import Prices from "../Prices/Prices";
+import { connect } from "react-redux";
 
-import data from "../ShoppingCart/Data.json";
+import paymentValidation from "../../Helpers/paymentValidation";
+import { maskDate, maskCard } from "../../Helpers/Mask";
+import { setStep } from "../../Actions/StepActions";
+import Prices from "../Prices/Prices";
+import { STEPS } from "../../Enum";
 
 import "./Payment.scss";
 
@@ -26,7 +28,7 @@ class Payment extends React.Component {
     const error = paymentValidation(object);
     this.setState({ error });
     if (Object.keys(error).length === 0) {
-      console.log('aqiu  dentro')
+      this.props.setStep(STEPS.CONFIRMATION);
     }
   };
 
@@ -43,8 +45,10 @@ class Payment extends React.Component {
   render() {
     const {
       values: { card, name, validate, cvv },
-      error
+      error,
     } = this.state;
+
+    const { products } = this.props;
 
     return (
       <form className="wrapper" onSubmit={this.onSubmit} autoComplete="off">
@@ -127,10 +131,10 @@ class Payment extends React.Component {
         </div>
         <div className="box-price">
           <Prices
-            subTotal={data.subTotal}
-            shippingTotal={data.shippingTotal}
-            discount={data.discount}
-            total={data.total}
+            subTotal={products.subTotal}
+            shippingTotal={products.shippingTotal}
+            discount={products.discount}
+            total={products.total}
           />
           <button className="btn btn-orange">Finalizar o pedido</button>
         </div>
@@ -139,4 +143,12 @@ class Payment extends React.Component {
   }
 }
 
-export default Payment;
+const mapStateToProps = (state) => ({
+  products: state.products,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setStep: (step) => dispatch(setStep(step)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Payment);

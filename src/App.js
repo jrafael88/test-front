@@ -1,5 +1,9 @@
 import React, { Fragment } from "react";
 import Loadable from "react-loadable";
+import { connect } from "react-redux";
+
+import { getProducts } from "./Actions/ProductsActions";
+import { STEPS } from "./Enum";
 
 const LoadableShopping = Loadable({
   loader: () => import("./Component/ShoppingCart/ShoppingCart"),
@@ -17,42 +21,40 @@ const LoadableConfirmation = Loadable({
 });
 
 class App extends React.Component {
-  state = {
-    shoppingCart: false,
-    payment: true,
-    confirmation: false,
-  };
+  componentDidMount() {
+    this.props.getProducts();
+  }
 
-  onClickButton = (value) => {
-    this.setState({
-      shoppingCart: false,
-      payment: false,
-      confirmation: false,
-      [value]: true,
-    });
-  };
+  onClickButton = (value) => {};
 
   render() {
-    const { shoppingCart, payment, confirmation } = this.state;
+    const { step } = this.props;
+
     return (
       <div>
         <div>
           <u>
-            <li onClick={() => this.onClickButton("shoppingCart")}>Sacola</li>
-            <li onClick={() => this.onClickButton("payment")}>Pagamento</li>
-            <li onClick={() => this.onClickButton("confirmation")}>
-              Confirmação
-            </li>
+            <li>Sacola</li>
+            <li>Pagamento</li>
+            <li>Confirmação</li>
           </u>
         </div>
         <Fragment>
-          {shoppingCart && <LoadableShopping showButton={shoppingCart} />}
-          {payment && <LoadablePayment />}
-          {confirmation && <LoadableConfirmation />}
+          {step === STEPS.SHOPPINGCART && <LoadableShopping />}
+          {step === STEPS.PAYMENT && <LoadablePayment />}
+          {step === STEPS.CONFIRMATION && <LoadableConfirmation />}
         </Fragment>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  step: state.steps.step,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getProducts: () => dispatch(getProducts()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
