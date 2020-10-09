@@ -3,6 +3,7 @@ import Loadable from "react-loadable";
 import { connect } from "react-redux";
 
 import { getProducts } from "./Actions/ProductsActions";
+import Steps from "./Component/Steps/Steps";
 import { STEPS } from "./Enum";
 
 const LoadableShopping = Loadable({
@@ -25,20 +26,12 @@ class App extends React.Component {
     this.props.getProducts();
   }
 
-  onClickButton = (value) => {};
-
   render() {
     const { step } = this.props;
 
     return (
       <div>
-        <div>
-          <u>
-            <li>Sacola</li>
-            <li>Pagamento</li>
-            <li>Confirmação</li>
-          </u>
-        </div>
+        <Steps />
         <Fragment>
           {step === STEPS.SHOPPINGCART && <LoadableShopping />}
           {step === STEPS.PAYMENT && <LoadablePayment />}

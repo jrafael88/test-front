@@ -1,0 +1,32 @@
+.steps {
+  background-color: #fff;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 3px;
+  background-color: #FFF;
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 29, 0.22);
+  display: flex;
+  justify-content: center;
+
+  &-list {
+    display: flex;
+
+    &-item {
+      list-style-type: none;
+      color: #CCC;
+      font-family: "Helvetica Neue";
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 16px;
+      text-transform: uppercase;
+
+      &.active {
+        color: #FF7800;
+      }
+
+      &:not(:last-child) {
+        margin-right: 38px;
+      }
+    }
+  }
+}
