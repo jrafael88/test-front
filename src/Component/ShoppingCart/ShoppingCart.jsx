@@ -50,7 +50,6 @@ class ShoppingCart extends React.Component {
                 </button>
               )}
             </div>
-            )
           </div>
         }
       </Fragment>

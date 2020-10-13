@@ -2,23 +2,24 @@ import React, { Fragment } from "react";
 import Loadable from "react-loadable";
 import { connect } from "react-redux";
 
+import Loading from "./Component/Loading/Loading"
 import { getProducts } from "./Actions/ProductsActions";
 import Steps from "./Component/Steps/Steps";
 import { STEPS } from "./Enum";
 
 const LoadableShopping = Loadable({
   loader: () => import("./Component/ShoppingCart/ShoppingCart"),
-  loading: () => "carregando",
+  loading: () => <Loading />,
 });
 
 const LoadablePayment = Loadable({
   loader: () => import("./Component/Payment/Payment"),
-  loading: () => "carregando",
+  loading: () => <Loading />,
 });
 
 const LoadableConfirmation = Loadable({
   loader: () => import("./Component/Confirmation/Confirmation"),
-  loading: () => "carregando",
+  loading: () => <Loading />,
 });
 
 class App extends React.Component {

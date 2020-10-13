@@ -7,7 +7,6 @@ import "./Steps.scss";
 class Steps extends React.Component {
   render() {
     const { step } = this.props;
-    console.log(this.props.step, step);
     return (
       <div className="steps">
         <ul className="steps-list">
